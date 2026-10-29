@@ -1,0 +1,108 @@
+# ==============================================================================
+# .gitignore - TP7: Databricks, PySpark & Delta Lake Pipeline
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# 1. Entorno Python y dependencias locales
+# ------------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Entornos virtuales locales
+.venv/
+venv/
+env/
+ENV/
+build/
+dist/
+*.egg-info/
+
+# ------------------------------------------------------------------------------
+# 2. Apache Spark, Hadoop y Delta Lake (Archivos locales y temporales)
+# ------------------------------------------------------------------------------
+# Metastore y warehouse generados al correr PySpark local o en tests
+metastore_db/
+derby.log
+spark-warehouse/
+
+# Checksums generados por Spark/Hadoop
+*.crc
+.tmp/
+
+# Logs y estados locales de Delta Lake (si se ejecutan pruebas locales)
+_delta_log/
+checkpoint/
+checkpoints/
+
+# Formatos binarios de datos pesados/procesados
+*.parquet
+*.orc
+*.avro
+
+# ------------------------------------------------------------------------------
+# 3. Datasets y Datos
+# ------------------------------------------------------------------------------
+# Evita subir datasets pesados o particiones completas de datos
+data/*
+# Excepción: Mantener en Git solo la muestra pequeña de prueba
+!data/sample_ventas.csv
+!data/.gitkeep
+
+# ------------------------------------------------------------------------------
+# 4. Jupyter y Notebooks interactivos
+# ------------------------------------------------------------------------------
+.ipynb_checkpoints/
+*-checkpoint.ipynb
+.virtual_documents/
+
+# ------------------------------------------------------------------------------
+# 5. Databricks CLI y Credenciales / Secretos
+# ------------------------------------------------------------------------------
+# Configuración del CLI de Databricks y tokens
+.databrickscfg
+.databricks/
+
+# Variables de entorno y credenciales (claves de AWS, tokens de GitHub/Databricks)
+.env
+.env.*
+*.pem
+*.key
+
+# ------------------------------------------------------------------------------
+# 6. Herramientas de testing, linters y CI (pytest, ruff, flake8)
+# ------------------------------------------------------------------------------
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+*.log
+
+# ------------------------------------------------------------------------------
+# 7. Terraform (en caso de haber generado archivos o pruebas de infra)
+# ------------------------------------------------------------------------------
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+*.tfvars
+*.tfvars.json
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# ------------------------------------------------------------------------------
+# 8. Archivos del Sistema Operativo y Editores (IDEs)
+# ------------------------------------------------------------------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# VS Code / JetBrains PyCharm
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
